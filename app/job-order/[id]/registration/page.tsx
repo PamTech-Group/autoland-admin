@@ -158,9 +158,9 @@ function RegistrationPage({ params }: PageProps) {
         reverseCamera: false,
       },
       fuelLevel: 0,
-      assignTechnicians: "",
     },
     sectionD: {
+      assignTechnicians: "",
       customerJobOrderStatus: "Disapprove",
       jobOrderStatus: "Inprogress",
       repairStatus: "Pending",
@@ -360,12 +360,6 @@ function RegistrationPage({ params }: PageProps) {
                           fuelLevel: value,
                         })
                       }
-                      onTechniciansChange={(value: string) =>
-                        updateSection("sectionC", {
-                          ...formData.sectionC,
-                          assignTechnicians: value,
-                        })
-                      }
                     />
                   </TabPanel>
                   {/* Section D: Job Order & Repair Status, Car Received By */}
@@ -376,6 +370,12 @@ function RegistrationPage({ params }: PageProps) {
                         updateSection("sectionD", {
                           ...formData.sectionD,
                           [field]: value,
+                        })
+                      }
+                      onTechniciansChange={(value: string) =>
+                        updateSection("sectionD", {
+                          ...formData.sectionD,
+                          assignTechnicians: value,
                         })
                       }
                     />

@@ -8,8 +8,6 @@ import {
   SliderThumb,
   SliderTrack,
   Tooltip,
-  Select,
-  VStack,
 } from "@chakra-ui/react";
 import { FaTools } from "react-icons/fa";
 import { CheckboxGroup } from "./Form";
@@ -18,22 +16,15 @@ import { SectionTitle } from "./styling/sectionTitle";
 interface TabDFormData {
   bodyCheckList: { [key: string]: boolean };
   fuelLevel: number;
-  assignTechnicians: string;
 }
 
 interface TabDProps {
   formData: TabDFormData;
   onChange: (field: string, value: boolean) => void;
   onFuelChange: (value: number) => void;
-  onTechniciansChange: (value: string) => void;
 }
 
-const TabD: React.FC<TabDProps> = ({
-  formData,
-  onChange,
-  onFuelChange,
-  onTechniciansChange,
-}) => {
+const TabD: React.FC<TabDProps> = ({ formData, onChange, onFuelChange }) => {
   const [showTooltip, setShowTooltip] = React.useState(false);
 
   const handleChecklistChange = (field: string, value: boolean) => {
@@ -90,26 +81,30 @@ const TabD: React.FC<TabDProps> = ({
             colorScheme="blue"
             onChange={(v) => onFuelChange(v)}
             onMouseEnter={() => setShowTooltip(true)}
-            onMouseLeave={() => setShowTooltip(false)}>
+            onMouseLeave={() => setShowTooltip(false)}
+          >
             <SliderMark
               value={25}
               mt="1"
               ml="-2.5"
-              fontSize={{ base: "xs", md: "sm" }}>
+              fontSize={{ base: "xs", md: "sm" }}
+            >
               25%
             </SliderMark>
             <SliderMark
               value={50}
               mt="1"
               ml="-2.5"
-              fontSize={{ base: "xs", md: "sm" }}>
+              fontSize={{ base: "xs", md: "sm" }}
+            >
               50%
             </SliderMark>
             <SliderMark
               value={75}
               mt="1"
               ml="-2.5"
-              fontSize={{ base: "xs", md: "sm" }}>
+              fontSize={{ base: "xs", md: "sm" }}
+            >
               75%
             </SliderMark>
             <SliderTrack bg="gray.200" height={{ base: 1, md: 2 }}>
@@ -122,31 +117,12 @@ const TabD: React.FC<TabDProps> = ({
               placement="top"
               isOpen={showTooltip}
               label={`${formData.fuelLevel}%`}
-              fontSize={{ base: "xs", md: "sm" }}>
+              fontSize={{ base: "xs", md: "sm" }}
+            >
               <SliderThumb boxSize={{ base: 4, md: 6 }} />
             </Tooltip>
           </Slider>
         </Box>
-
-        <SectionTitle mt={{ base: 6, md: 8 }}>
-          <Icon
-            as={FaTools}
-            fontSize={{ base: "xs", md: "sm" }}
-            color="blue.500"
-          />
-          <Box fontSize={{ base: "xs", md: "sm" }}>Assign Technicians</Box>
-        </SectionTitle>
-        <VStack align="stretch" mt={4}>
-          <Select
-            name="assignTechnicians"
-            placeholder="Select Team"
-            value={formData.assignTechnicians}
-            onChange={(e) => onTechniciansChange(e.target.value)}>
-            <option value="Team A">Team A</option>
-            <option value="Team B">Team B</option>
-            <option value="Team C">Team C</option>
-          </Select>
-        </VStack>
       </Box>
     </>
   );

@@ -44,7 +44,6 @@ import { FaWallet } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import { withAuth } from "@/app/utils/services/ProtectecRoute";
 import {
-  Payment,
   PaymentMetrics,
   PaymentHistory,
   PaymentRequest,
@@ -76,7 +75,6 @@ function CustomerJobOrderAccount({ params }: { params: { id: string } }) {
   });
 
   const [payments, setPayments] = useState<PaymentHistory[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
   const [editable, setEditable] = useState(false);
   const [selectedPayment, setSelectedPayment] = useState<PaymentHistory | null>(
     null
@@ -242,6 +240,15 @@ function CustomerJobOrderAccount({ params }: { params: { id: string } }) {
       icon: FaCheckCircle,
       color: "green.500",
       bgGradient: "linear(to-r, green.400, green.600)",
+    },
+    {
+      title: "Total Job Amount",
+      value: `₦${metrics.totalJobAmount.toLocaleString()}`,
+      change: "100%",
+      isIncrease: true,
+      icon: FaWallet,
+      color: "purple.500",
+      bgGradient: "linear(to-r, purple.400, purple.600)",
     },
   ];
 

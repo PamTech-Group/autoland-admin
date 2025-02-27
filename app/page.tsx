@@ -5,7 +5,7 @@ import bgLogin from "./assets/login_bg.jpg";
 import GlassCard from "./components/minor/GlassCard";
 import { useRouter } from "next/navigation";
 import { authService } from "./utils/services/auth";
-import { setCookie, } from "cookies-next";
+import { setCookie } from "cookies-next";
 import { useAuth } from "./utils/services/context";
 
 export default function Home() {
@@ -129,7 +129,7 @@ export default function Home() {
               type="submit"
               colorScheme="blue"
               bgColor="primaryBlue"
-              color="gray.300"
+              color="gray.100"
               size="md"
               borderRadius="lg"
               w="100%"

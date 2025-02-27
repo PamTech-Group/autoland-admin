@@ -155,9 +155,9 @@ export interface JobOrderFormData {
   sectionC: {
     bodyCheckList: BodyCheckList;
     fuelLevel: number;
-    assignTechnicians: string;
   };
   sectionD: {
+    assignTechnicians: string;
     customerJobOrderStatus: "Approve" | "Disapprove";
     jobOrderStatus: "Demurrage" | "Delivered" | "Inprogress";
     repairStatus: "Pending" | "Ongoing" | "Completed";
@@ -190,9 +190,9 @@ export interface JobOrderData {
   sectionC: {
     bodyCheckList: BodyCheckList;
     fuelLevel: number;
-    assignTechnicians: string;
   };
   sectionD: {
+    assignTechnicians: string;
     customerJobOrderStatus: "Approve" | "Disapprove";
     jobOrderStatus: "Demurrage" | "Delivered" | "Inprogress";
     repairStatus: "Pending" | "Ongoing" | "Completed";

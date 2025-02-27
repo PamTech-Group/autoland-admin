@@ -159,9 +159,9 @@ function CreateJobOrderPage() {
         reverseCamera: false,
       },
       fuelLevel: 0, // Store as string percentage
-      assignTechnicians: "", // Keep if intentionally empty, or provide a team name string
     },
     sectionD: {
+      assignTechnicians: "", // Keep if intentionally empty, or provide a team name string
       customerJobOrderStatus: "Disapprove", // Keep if intended, but ensure capitalization is correct
       jobOrderStatus: "Inprogress", // Fixed format, one word
       repairStatus: "Pending", // Keep if intended
@@ -198,6 +198,7 @@ function CreateJobOrderPage() {
 
   const handleSubmit = async () => {
     setIsSubmitting(true);
+    console.log(formData);
     try {
       // API call to save job order
       await createJobOrder(formData);
@@ -296,17 +297,17 @@ function CreateJobOrderPage() {
                         fuelLevel: value,
                       })
                     }
-                    onTechniciansChange={(value: string) =>
-                      updateSection("sectionC", {
-                        ...formData.sectionC,
-                        assignTechnicians: value,
-                      })
-                    }
                   />
                 </TabPanel>
                 {/* Section D: Job Order & Repair Status, Car Received By */}
                 <TabPanel>
                   <TabC
+                    onTechniciansChange={(value: string) =>
+                      updateSection("sectionD", {
+                        ...formData.sectionD,
+                        assignTechnicians: value,
+                      })
+                    }
                     formData={formData.sectionD}
                     onChange={(field, value) =>
                       updateSection("sectionD", {
